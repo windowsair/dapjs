@@ -1,15 +1,15 @@
 {
-  "name": "dapjs",
-  "version": "2.3.0",
+  "name": "@elaphurelink/dapjs",
+  "version": "2.3.1",
   "description": "JavaScript interface to on-chip debugger (CMSIS-DAP)",
-  "homepage": "https://github.com/ARMmbed/dapjs",
+  "homepage": "https://github.com/windowsair/dapjs",
   "license": "MIT",
   "main": "dist/dap.umd.js",
   "module": "dist/dap.esm.js",
   "types": "types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ARMmbed/dapjs.git"
+    "url": "git://github.com/windowsair/dapjs.git"
   },
   "author": "Michal Moskal <michal@moskal.me>",
   "contributors": [

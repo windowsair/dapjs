@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+      - ci
+      - dev
     tags:
       - '*'
   pull_request:
@@ -22,19 +24,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20.x
+          registry-url: https://registry.npmjs.org/
       - name: Build
         run: |
           npm install
           npm run build
-      - name: Deploy to gh-pages
+      - name: Deploy to npm
         if: ${{ github.event_name == 'push' }}
         run: |
-          git config --global user.name thegecko
-          git config --global user.email github@thegecko.org
-          git add --force dist types docs
-          git stash save
-          git checkout gh-pages
-          git merge master --no-commit -X theirs
-          git checkout stash -- .
-          git commit --allow-empty --message "Automatic Deployment"
-          git push
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
