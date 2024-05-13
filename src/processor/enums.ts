@@ -51,7 +51,7 @@ export const enum CoreState {
  * Processor Core Registers
  * http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.100230_0004_00_en/way1435345987733.html
  */
-export const enum CoreRegister {
+export enum CoreRegister {
     /**
      * General purpose register
      */

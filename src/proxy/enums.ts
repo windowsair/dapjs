@@ -25,7 +25,7 @@
  * CMSIS-DAP Protocol
  * https://www.keil.com/pack/doc/CMSIS/DAP/html/group__DAP__Connect.html
  */
-export const enum DAPProtocol {
+export enum DAPProtocol {
     /**
      * Default mode: configuration of the DAP port mode is derived from DAP_DEFAULT_PORT
      */
