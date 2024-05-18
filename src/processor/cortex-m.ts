@@ -53,18 +53,21 @@ const GENERAL_REGISTER_COUNT = 12;
  * Cortex M class
  */
 export class CortexM extends ADI implements Processor {
+    public override async waitDelay(fn: () => Promise<boolean>, timeout: number = 0, timer: number = 100): Promise<void> {
+        return super.waitDelay(fn, timeout, timer);
+    }
 
     private enableDebug() {
         return this.writeMem32(DebugRegister.DHCSR, DhcsrMask.DBGKEY | DhcsrMask.C_DEBUGEN);
     }
 
-    protected readCoreRegisterCommand(register: number): DAPOperation[] {
+    public readCoreRegisterCommand(register: number): DAPOperation[] {
         return this.writeMem32Command(DebugRegister.DCRSR, register)
             .concat(this.readMem32Command(DebugRegister.DHCSR))
             .concat(this.readMem32Command(DebugRegister.DCRDR));
     }
 
-    protected writeCoreRegisterCommand(register: number, value: number): DAPOperation[] {
+    public writeCoreRegisterCommand(register: number, value: number): DAPOperation[] {
         return this.writeMem32Command(DebugRegister.DCRDR, value)
             .concat(this.writeMem32Command(DebugRegister.DCRSR, register | DcrsrMask.REGWnR));
     }

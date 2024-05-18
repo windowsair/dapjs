@@ -1,6 +1,6 @@
 {
   "name": "@elaphurelink/dapjs",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "JavaScript interface to on-chip debugger (CMSIS-DAP)",
   "homepage": "https://github.com/windowsair/dapjs",
   "license": "MIT",
