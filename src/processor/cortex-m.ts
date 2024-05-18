@@ -57,6 +57,10 @@ export class CortexM extends ADI implements Processor {
         return super.waitDelay(fn, timeout, timer);
     }
 
+    public override async transferSequence(operations: DAPOperation[][]): Promise<Uint32Array> {
+        return super.transferSequence(operations);
+    }
+
     private enableDebug() {
         return this.writeMem32(DebugRegister.DHCSR, DhcsrMask.DBGKEY | DhcsrMask.C_DEBUGEN);
     }
