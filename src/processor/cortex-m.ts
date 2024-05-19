@@ -53,8 +53,8 @@ const GENERAL_REGISTER_COUNT = 12;
  * Cortex M class
  */
 export class CortexM extends ADI implements Processor {
-    public override async waitDelay(fn: () => Promise<boolean>, timeout: number = 0, timer: number = 100): Promise<void> {
-        return super.waitDelay(fn, timeout, timer);
+    public override async waitDelay(fn: () => Promise<boolean>, timeout: number = 0, delay: number = 100): Promise<void> {
+        return super.waitDelay(fn, timeout, delay);
     }
 
     public override async transferSequence(operations: DAPOperation[][]): Promise<Uint32Array> {
