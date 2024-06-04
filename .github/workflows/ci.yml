@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - ci-rollup
     tags:
       - '*'
   pull_request:
