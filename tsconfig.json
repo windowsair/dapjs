@@ -8,6 +8,7 @@
             "es2015.core",
             "es2015.promise"
         ],
+        "skipLibCheck": true,
         "strict": true,
         "noImplicitReturns": true,
         "noEmitOnError": true,

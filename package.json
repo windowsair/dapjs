@@ -1,12 +1,24 @@
 {
   "name": "@elaphurelink/dapjs",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "description": "JavaScript interface to on-chip debugger (CMSIS-DAP)",
   "homepage": "https://github.com/windowsair/dapjs",
   "license": "MIT",
-  "main": "dist/dap.umd.js",
-  "module": "dist/dap.esm.js",
+  "main": "dist/dap.node.umd.js",
+  "module": "dist/dap.node.esm.js",
   "types": "types/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": {
+        "require": "./types/index.d.ts",
+        "import": "./src/index.d.ts"
+      },
+      "browser": "./dist/dap.esm.js",
+      "require": "./dist/dap.node.umd.js",
+      "import": "./dist/dap.node.esm.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/windowsair/dapjs.git"
@@ -44,10 +56,14 @@
   "dependencies": {
     "@types/node-hid": "^1.2.0",
     "@types/usb": "^1.5.1",
-    "@types/w3c-web-usb": "^1.0.10"
+    "@types/w3c-web-usb": "^1.0.10",
+    "unws": "^0.2.4",
+    "ws": "^8.17.0"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-eslint": "^9.0.5",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@stylistic/eslint-plugin-js": "^1.5.4",
     "@types/node": "^20.11.20",
