@@ -366,12 +366,15 @@ export class CmsisDAP extends EventEmitter implements Proxy {
         await this.transport.open();
 
         try {
-            await this.send(DAPCommand.DAP_SWJ_CLOCK, new Uint32Array([this.clockFrequency]));
+            await this.send(DAPCommand.DAP_DISCONNECT);
+
             const result = await this.send(DAPCommand.DAP_CONNECT, new Uint8Array([this.mode]));
 
             if (result.getUint8(1) === DAPConnectResponse.FAILED || this.mode !== DAPProtocol.DEFAULT && result.getUint8(1) !== this.mode) {
                 throw new Error('Mode not enabled.');
             }
+
+            await this.send(DAPCommand.DAP_SWJ_CLOCK, new Uint32Array([this.clockFrequency]));
         } catch (error) {
             await this.clearAbort();
             await this.transport.close();
